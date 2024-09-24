@@ -1,0 +1,92 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+.search-form {
+    display: flex;
+    align-items: center;
+    margin: auto;
+}
+
+    .search-form input[type="text"] {
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px 0 0 5px;
+        outline: none;
+        width: 500px;
+    }
+
+    .search-form button {
+        padding: 5px 10px;
+        border: 1px solid #ccc;
+        border-left: none;
+        border-radius: 0 5px 5px 0;
+        background-color: #f8f8f8;
+        cursor: pointer;
+    }
+
+        .search-form button:hover {
+            background-color: #e8e8e8;
+        }
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+h2 {
+    color: #343a40;
+    margin-bottom: 30px;
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+    font-size: 1.25rem;
+    color: #007bff;
+}
+
+.card-subtitle {
+    font-size: 0.875rem;
+    color: #6c757d;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #495057;
+}
+
+.list-unstyled {
+    padding-left: 0;
+}
+
+    .list-unstyled li {
+        font-size: 0.875rem;
+        color: #6c757d;
+    }

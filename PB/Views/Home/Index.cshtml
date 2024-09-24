@@ -1,0 +1,111 @@
+﻿<head>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+
+@model PB.ViewModels.HomeViewModel
+
+@{
+    ViewData["Title"] = "Página Inicial";
+}
+<style>
+
+    .artist-card, .event-card {
+        border: 1px solid #ccc;
+        border-radius: 20px;
+        padding: 10px;
+        width: 200px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s;
+        text-decoration: none;
+        color: black;
+        background-color: white;
+    }
+
+        .artist-card:hover, .event-card:hover {
+            transform: scale(1.05);
+        }
+
+        .artist-card img, .event-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .artist-card h4, .event-card h4 {
+            margin-top: 10px;
+            font-size: 1.2em;
+        }
+
+    .artist-container, .event-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        justify-content: center;
+        margin-bottom: 30px;
+    }
+
+    .section-title {
+        text-align: center;
+        margin-top: 30px;
+        margin-bottom: 20px;
+        font-size: 2em;
+        color: #343a40;
+    }
+
+    .section-divider {
+        width: 50%;
+        margin: 0 auto 30px;
+        border-top: 2px solid #007bff;
+    }
+</style>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="text-center">
+
+    </div>
+
+    <h2 class="section-title">Artistas Recomendados</h2>
+    <hr class="section-divider" />
+    <div class="artist-container">
+        @if (Model != null && Model.Artistas.Any())
+        {
+            foreach (var artist in Model.Artistas)
+            {
+                <a href="@Url.Action("Details", "Artistas", new { id = artist.Id })" class="artist-card">
+                    <img src="@artist.PhotoUrl" alt="@artist.Nome" />
+                    <h4>@artist.Nome</h4>
+                </a>
+            }
+        }
+        else
+        {
+            <p>Sem Artista</p>
+        }
+    </div>
+
+    <h2 class="section-title">Eventos Próximos</h2>
+    <hr class="section-divider" />
+    <div class="event-container">
+        @if (Model != null && Model.Eventos.Any())
+        {
+            foreach (var evento in Model.Eventos)
+            {
+                <a href="@Url.Action("Details", "Eventos", new { id = evento.Id })" class="event-card">
+                    <img src="@evento.Nome" alt="@evento.Nome" />
+                    <h4>@evento.Nome</h4>
+                </a>
+            }
+        }
+        else
+        {
+            <p>Sem Eventos</p>
+        }
+    </div>
+}
+else
+{
+    <p>Você não está logado.</p>
+}
