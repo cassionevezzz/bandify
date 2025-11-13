@@ -37,27 +37,30 @@ namespace PB.Controllers
         [HttpPost]
         [Route("Eventoes/Create")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(EventoCreateViewModel viewModel)
+        public async Task<IActionResult> Create(PB.ViewModels.EventoCreateViewModel model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                var artista = await _context.Artistas.FindAsync(viewModel.ArtistaId);
-                var evento = new Evento
-                {
-                    Nome = viewModel.Nome,
-                    Localizacao = viewModel.Localizacao,
-                    Data = viewModel.Data,
-                    Artista = artista
-                };
+                model.Artistas = await _context.Artistas
+                    .OrderBy(a => a.Nome)
+                    .ToListAsync();
 
-                _context.Eventos.Add(evento);
-                await _context.SaveChangesAsync();
-
-                return RedirectToAction(nameof(Index));
+                return View(model);
             }
 
-            viewModel.Artistas = await _context.Artistas.ToListAsync();
-            return View(viewModel);
+            var evento = new PB.Models.Evento {
+                Nome = model.Nome,
+                Localizacao = model.Localizacao,
+                Data = model.Data,
+                ArtistaId = model.ArtistaId
+            };
+
+            
+
+            _context.Eventos.Add(evento);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Eventoes

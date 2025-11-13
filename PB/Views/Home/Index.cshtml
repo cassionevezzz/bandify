@@ -61,13 +61,12 @@
     }
 </style>
 
-@if (User.Identity.IsAuthenticated)
-{
+
     <div class="text-center">
 
     </div>
 
-    <h2 class="section-title">Artistas Recomendados</h2>
+    <h2 class="section-title">Artistas Populares</h2>
     <hr class="section-divider" />
     <div class="artist-container">
         @if (Model != null && Model.Artistas.Any())
@@ -94,8 +93,10 @@
             foreach (var evento in Model.Eventos)
             {
                 <a href="@Url.Action("Details", "Eventos", new { id = evento.Id })" class="event-card">
-                    <img src="@evento.Nome" alt="@evento.Nome" />
-                    <h4>@evento.Nome</h4>
+                    <img src="@evento.Artista.PhotoUrl" alt="@evento.Artista.Nome" />
+                    <h3>@evento.Nome</h3>
+                    <h4>@evento.Artista.Nome</h4>
+                    <p>@evento.Localizacao</p>
                 </a>
             }
         }
@@ -104,8 +105,4 @@
             <p>Sem Eventos</p>
         }
     </div>
-}
-else
-{
-    <p>Você não está logado.</p>
-}
+

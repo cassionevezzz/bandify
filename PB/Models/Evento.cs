@@ -10,6 +10,8 @@ namespace PB.Models
         public string Nome { get; set; }
         public string Localizacao { get; set; }
         public DateTime Data { get; set; }
+        [Required]
+        public int ArtistaId { get; set; }
         public Artista Artista { get; set; }
         public List<Avaliacao> Avalicoes { get; set; } = new List<Avaliacao>();
     }
