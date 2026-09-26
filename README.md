@@ -140,9 +140,6 @@ O cadastro exige confirmação de conta (`RequireConfirmedAccount = true`). Como
 - A página inicial carrega eventos sem incluir o `Artista` relacionado (`.Include`), o que pode causar erro quando há eventos cadastrados.
 - O link dos cards de evento na home aponta para o controller `Eventos` em vez de `Eventoes`.
 - A edição de eventos não inclui `ArtistaId` no `[Bind]`, perdendo o vínculo com o artista.
-- As telas de CRUD não exigem login (`[Authorize]` ausente).
-- O arquivo de banco `app.db` está versionado no Git.
-
 ---
 
 ## 🧭 Próximos passos
