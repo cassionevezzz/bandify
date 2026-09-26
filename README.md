@@ -85,7 +85,7 @@ Recomendacao   (independente)
 
 ### Pré-requisitos
 - [.NET SDK 8.0](https://dotnet.microsoft.com/download/dotnet/8.0)
-- (Opcional) ferramenta do EF Core: `dotnet tool install --global dotnet-ef`
+- Ferramenta do EF Core, necessária para criar o banco: `dotnet tool install --global dotnet-ef`
 
 ### Passos
 
@@ -97,12 +97,14 @@ cd bandsintown-clone/PB
 # Restaurar dependências
 dotnet restore
 
-# Aplicar as migrações (cria/atualiza o app.db)
+# Aplicar as migrações do EF Core (cria/atualiza o app.db)
 dotnet ef database update
 
 # Rodar a aplicação
 dotnet run
 ```
+
+> **Sobre o banco de dados:** o arquivo `app.db`  é gerado localmente pelo comando `dotnet ef database update`, que executa as migrações da pasta `PB/Data/Migrations`. Sem esse passo a aplicação não sobe, pois as tabelas não existem. Para recriar o banco do zero, apague `PB/app.db` (e os arquivos `app.db-shm` e `app.db-wal`, se houver) e rode o comando novamente.
 
 A aplicação ficará disponível em:
 - http://localhost:5276
