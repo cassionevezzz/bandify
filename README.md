@@ -137,16 +137,7 @@ O cadastro exige confirmação de conta (`RequireConfirmedAccount = true`). Como
 
 ---
 
-## ⚠️ Problemas conhecidos
-
-- A página inicial carrega eventos sem incluir o `Artista` relacionado (`.Include`), o que pode causar erro quando há eventos cadastrados.
-- O link dos cards de evento na home aponta para o controller `Eventos` em vez de `Eventoes`.
-- A edição de eventos não inclui `ArtistaId` no `[Bind]`, perdendo o vínculo com o artista.
----
-
 ## 🧭 Próximos passos
-
-- [ ] Corrigir os problemas conhecidos acima
 - [ ] Telas de avaliação de eventos
 - [ ] Seguir/favoritar artistas
 - [ ] Sistema de notificações
